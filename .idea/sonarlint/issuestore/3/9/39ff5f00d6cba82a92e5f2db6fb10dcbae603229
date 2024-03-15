@@ -1,0 +1,9 @@
+
+]
+java:S2134"@Don't extend "Thread", since the "run" method is not overridden.(ì«ëÅ8¹î€ğá1
+S
+java:S1068"1Remove this unused "startPosition" private field.(¥¨ÍÙùÿÿÿÿ8ºî€ğá1
+T
+java:S1068"2Remove this unused "finishPosition" private field.(»œæøÿÿÿÿ8ºî€ğá1
+P
+java:S1068".Remove this unused "minService" private field.(•Ú„ÿÿÿÿÿ8ºî€ğá1
