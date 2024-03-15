@@ -7,19 +7,23 @@ import java.util.Random;
 public class MinService {
     private final int numberOfParts;
     private final int numberOfThread;
-    private final ArrayList numbers;
+    private final ArrayList<Integer> numbers;
 
-    public MinService(int numberOfParts, int numberOfThread) {
+
+    private final int numberOfElements;
+
+    public MinService(int numberOfParts, int numberOfThread, int numberOfElements) {
         this.numberOfParts = numberOfParts;
         this.numberOfThread = numberOfThread;
+        this.numberOfElements = numberOfElements;
         numbers = new ArrayList<>();
-        setNumbers(numbers);
+        setNumbers();
     }
 
-    private void setNumbers(ArrayList numbers) {
-        Random random = new Random(156);
-        for (int i = 0; i < numbers.size(); i++) {
-            this.numbers.add(random.nextInt());
+    private void setNumbers() {
+        Random random = new Random();
+        for (int i = 0; i < this.numberOfElements; i++) {
+            this.numbers.add(random.nextInt(90));
         }
     }
 
@@ -35,11 +39,15 @@ public class MinService {
         return numbers;
     }
 
-    private int partFindMinNumber(int startPosition, int finishPosition) {
-        int localMin = startPosition;
+    public int getNumberOfElements() {
+        return numberOfElements;
+    }
+
+    public int partFindMinNumber(int startPosition, int finishPosition) {
+        int localMin = numbers.get(startPosition);
         for (int currentElement = startPosition + 1; currentElement < finishPosition; currentElement++) {
-            if (currentElement > localMin) {
-                localMin = currentElement;
+            if (numbers.get(currentElement) < localMin) {
+                localMin = numbers.get(currentElement);
             }
         }
         return localMin;
