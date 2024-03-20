@@ -5,52 +5,58 @@ import java.util.List;
 import java.util.Random;
 
 public class MinService {
-    private final int numberOfParts;
-    private final int numberOfThread;
-    private final ArrayList<Integer> numbers;
+    private final ArrayList<Integer> numbers = new ArrayList<>();
+    Random random = new Random();
+    private int minElement;
+    private int minIndex;
 
-
-    private final int numberOfElements;
-
-    public MinService(int numberOfParts, int numberOfThread, int numberOfElements) {
-        this.numberOfParts = numberOfParts;
-        this.numberOfThread = numberOfThread;
-        this.numberOfElements = numberOfElements;
-        numbers = new ArrayList<>();
-        setNumbers();
+    public MinService(int numberOfElements) {
+        generateNumbers(numberOfElements);
+        this.minElement = numbers.getFirst();
     }
 
-    private void setNumbers() {
-        Random random = new Random();
-        for (int i = 0; i < this.numberOfElements; i++) {
-            this.numbers.add(random.nextInt(90));
+    public synchronized int getMinElement() {
+        return minElement;
+    }
+
+    public synchronized void setMinElement(int minElement) {
+        this.minElement = minElement;
+    }
+
+    public synchronized int getMinIndex() {
+        return minIndex;
+    }
+
+    public synchronized void setMinIndex(int minIndex) {
+        this.minIndex = minIndex;
+    }
+
+    private void generateNumbers(int numberOfElements) {
+        for (int currentElement = 0; currentElement < numberOfElements; currentElement++) {
+            this.numbers.add(this.random.nextInt(90) - 10);
         }
     }
 
-    public int getNumberOfParts() {
-        return numberOfParts;
-    }
-
-    public int getNumberOfThread() {
-        return numberOfThread;
-    }
-
-    public List getNumbers() {
+    public List<Integer> getNumbers() {
         return numbers;
     }
 
-    public int getNumberOfElements() {
-        return numberOfElements;
+    private synchronized void updateGlobalMin(int localMin, int localMinIndex) {
+        if (localMin < this.minElement) {
+            setMinElement(localMin);
+            setMinIndex(localMinIndex);
+        }
     }
 
-    public int partFindMinNumber(int startPosition, int finishPosition) {
-        int localMin = numbers.get(startPosition);
-        for (int currentElement = startPosition + 1; currentElement < finishPosition; currentElement++) {
-            if (numbers.get(currentElement) < localMin) {
-                localMin = numbers.get(currentElement);
+    public void findMinNumber(int startPosition, int endPosition) {
+        int minIndexLocal = startPosition;
+        int minLocal = numbers.get(startPosition);
+        for (int currentElement = startPosition + 1; currentElement < endPosition; currentElement++) {
+            if (numbers.get(currentElement) < minLocal) {
+                minLocal = numbers.get(currentElement);
+                minIndexLocal = currentElement;
             }
         }
-        return localMin;
+        updateGlobalMin(minLocal, minIndexLocal);
     }
-
 }

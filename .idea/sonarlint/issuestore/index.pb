@@ -22,8 +22,6 @@ I
 LabWork2/build.gradle.kts,2/3/23d7bb5b7c5949d0b59b794d2b8d666beaff9336
 o
 ?LabWork2/src/main/java/org/chala_elvira/threads/MinService.java,7/9/79ff1079c83de79b95876fb5391bca3ee3ce1883
-m
-=LabWork2/src/main/java/org/chala_elvira/threads/MinThead.java,9/e/9ef7074cb8a183f48113b3c7d7329608eb0bdefb
 a
 1LabWork2/src/main/java/org/chala_elvira/Main.java,8/0/802c833491df4f731a2bea4092267acab1680d2f
 w
@@ -62,3 +60,5 @@ Q.idea/sonarlint/securityhotspotstore/4/a/4a59731cca679b523655c21887f9b5aba456c9
 Q.idea/sonarlint/securityhotspotstore/3/9/39ff5f00d6cba82a92e5f2db6fb10dcbae603229,6/f/6fe956b95bdcebc3c4407b5b157fad5de5c20aef
 
 Q.idea/sonarlint/securityhotspotstore/e/5/e5ae364bbc0f3b1d0be30951868b9439c50609ec,b/e/beaa483ca10127516d49c40388a4d95c4a166c8a
+n
+>LabWork2/src/main/java/org/chala_elvira/threads/MinThread.java,8/3/83fb56b4eca2f170ff96c6948a3ae22b602e4998
