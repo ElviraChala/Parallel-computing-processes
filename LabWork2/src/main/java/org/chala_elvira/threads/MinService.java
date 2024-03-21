@@ -32,9 +32,10 @@ public class MinService {
     }
 
     private void generateNumbers(int numberOfElements) {
-        for (int currentElement = 0; currentElement < numberOfElements; currentElement++) {
-            this.numbers.add(this.random.nextInt(90) - 10);
+        for (int currentElement = 0; currentElement < numberOfElements-1; currentElement++) {
+            this.numbers.add(this.random.nextInt(90));
         }
+        this.numbers.add(-99);
     }
 
     public List<Integer> getNumbers() {
